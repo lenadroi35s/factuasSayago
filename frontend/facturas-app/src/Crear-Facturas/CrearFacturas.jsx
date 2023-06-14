@@ -14,6 +14,7 @@ import {
   CRow,
 } from "@coreui/react";
 import { PostFacturas } from "./services/services";
+import "./styles/styles.css";
 
 export default function CrearFacturas({ enviar, setEnviar }) {
   const [tipo, setTipo] = useState("");
@@ -27,8 +28,8 @@ export default function CrearFacturas({ enviar, setEnviar }) {
   const [itemsAnio, setItemsAnio] = useState("");
   const [itemsCantidad, setItemsCantidad] = useState("");
   const [itemsPrecio, setItemsPrecio] = useState("");
-  const [itemsArtista, setItemsArtista] = useState("");
-  const [interes, setInteres] = useState([]);
+  const [interes, setInteres] = useState("");
+
   const clienteD = {
     cliente: {
       tipo: tipo,
@@ -36,25 +37,27 @@ export default function CrearFacturas({ enviar, setEnviar }) {
       nombre: nombre,
       ciudad: ciudad,
       cedula: cedula,
-      item: [
-        {
-          album: itemsAlbum,
-          anio: itemsAnio,
-          cantidad: itemsCantidad,
-          precio: itemsPrecio,
-        },
-      ],
-      tipodepago: tipoPago,
-      nroFactura: numeroFactura,
-      intereses: [interes],
     },
+    tipodepago: tipoPago,
+    item: [
+      {
+        album: itemsAlbum,
+        anio: itemsAnio,
+        cantidad: itemsCantidad,
+        precio: itemsPrecio,
+      },
+    ],
+    nroFactura: numeroFactura,
+    intereses: [interes],
   };
+
   const handleSubmit = async () => {
     console.log(clienteD);
     try {
       await PostFacturas(clienteD);
     } catch (error) {}
   };
+
   return (
     <div>
       <CContainer>
@@ -68,10 +71,10 @@ export default function CrearFacturas({ enviar, setEnviar }) {
           </CModalHeader>
           <CModalBody>
             <CCallout color="secondary">
-              <CRow className="mb-2 justify-content-center mx-auto">
+              <CRow className="mb-2 justify-content-center mx-auto ">
                 <CFormLabel>Cliente:</CFormLabel>
                 <CCol xs="auto">
-                  <CFormLabel>Tipo:</CFormLabel>
+                  <CFormLabel className="label-width">Tipo:</CFormLabel>
                 </CCol>
                 <CCol xs="auto">
                   <CFormInput onChange={(e) => setTipo(e.target.value)} />
@@ -79,7 +82,7 @@ export default function CrearFacturas({ enviar, setEnviar }) {
               </CRow>
               <CRow className="mb-2 justify-content-center mx-auto">
                 <CCol xs="auto">
-                  <CFormLabel>Apellido:</CFormLabel>
+                  <CFormLabel className="label-width">Apellido:</CFormLabel>
                 </CCol>
                 <CCol xs="auto">
                   <CFormInput onChange={(e) => setApellido(e.target.value)} />
@@ -87,7 +90,7 @@ export default function CrearFacturas({ enviar, setEnviar }) {
               </CRow>
               <CRow className="mb-2 justify-content-center mx-auto">
                 <CCol xs="auto">
-                  <CFormLabel>Nombre:</CFormLabel>
+                  <CFormLabel className="label-width">Nombre:</CFormLabel>
                 </CCol>
                 <CCol xs="auto">
                   <CFormInput onChange={(e) => setNombre(e.target.value)} />
@@ -95,7 +98,7 @@ export default function CrearFacturas({ enviar, setEnviar }) {
               </CRow>
               <CRow className="mb-2 justify-content-center mx-auto">
                 <CCol xs="auto">
-                  <CFormLabel>Ciudad:</CFormLabel>
+                  <CFormLabel className="label-width">Ciudad:</CFormLabel>
                 </CCol>
                 <CCol xs="auto">
                   <CFormInput onChange={(e) => setCiudad(e.target.value)} />
@@ -103,7 +106,7 @@ export default function CrearFacturas({ enviar, setEnviar }) {
               </CRow>
               <CRow className="mb-2 justify-content-center mx-auto">
                 <CCol xs="auto">
-                  <CFormLabel>Cedula :</CFormLabel>
+                  <CFormLabel className="label-width">Cedula :</CFormLabel>
                 </CCol>
                 <CCol xs="auto">
                   <CFormInput onChange={(e) => setCedula(e.target.value)} />
@@ -112,11 +115,11 @@ export default function CrearFacturas({ enviar, setEnviar }) {
             </CCallout>
             <CCallout color="info">
               <CRow>
-                <CFormLabel>Otros:</CFormLabel>
+                <CFormLabel >Otros:</CFormLabel>
               </CRow>
               <CRow>
                 <CCol>
-                  <CFormLabel>Tipo de Pago:</CFormLabel>
+                  <CFormLabel className="label-width">Tipo de Pago:</CFormLabel>
                 </CCol>
                 <CCol className="justify-content-center mx-auto">
                   <CFormSelect
@@ -132,11 +135,11 @@ export default function CrearFacturas({ enviar, setEnviar }) {
                 </CCol>
               </CRow>
               <CRow>
-                <CFormLabel>Item:</CFormLabel>
+                <CFormLabel >Item:</CFormLabel>
                 <CCallout>
                   <CRow className="mb-2 justify-content-center mx-auto">
                     <CCol xs="auto">
-                      <CFormLabel>Album:</CFormLabel>
+                      <CFormLabel className="label-width">Album:</CFormLabel>
                     </CCol>
                     <CCol xs="auto">
                       <CFormInput
@@ -146,7 +149,7 @@ export default function CrearFacturas({ enviar, setEnviar }) {
                   </CRow>
                   <CRow className="mb-2 justify-content-center mx-auto">
                     <CCol xs="auto">
-                      <CFormLabel>Año:</CFormLabel>
+                      <CFormLabel className="label-width">Año:</CFormLabel>
                     </CCol>
                     <CCol xs="auto">
                       <CFormInput
@@ -156,7 +159,7 @@ export default function CrearFacturas({ enviar, setEnviar }) {
                   </CRow>
                   <CRow className="mb-2 justify-content-center mx-auto">
                     <CCol xs="auto">
-                      <CFormLabel>Cantidad:</CFormLabel>
+                      <CFormLabel className="label-width">Cantidad:</CFormLabel>
                     </CCol>
                     <CCol xs="auto">
                       <CFormInput
@@ -166,7 +169,7 @@ export default function CrearFacturas({ enviar, setEnviar }) {
                   </CRow>
                   <CRow className="mb-2 justify-content-center mx-auto">
                     <CCol xs="auto">
-                      <CFormLabel>Precio:</CFormLabel>
+                      <CFormLabel className="label-width">Precio:</CFormLabel>
                     </CCol>
                     <CCol xs="auto">
                       <CFormInput
@@ -176,9 +179,9 @@ export default function CrearFacturas({ enviar, setEnviar }) {
                   </CRow>
                 </CCallout>
               </CRow>
-              <CRow>
+              <CRow className="mb-2 justify-content-center mx-auto">
                 <CCol xs="auto">
-                  <CFormLabel>Numero de factura:</CFormLabel>
+                  <CFormLabel className="label-width"># Factura:</CFormLabel>
                 </CCol>
                 <CCol xs="auto">
                   <CFormInput
@@ -186,8 +189,8 @@ export default function CrearFacturas({ enviar, setEnviar }) {
                   />
                 </CCol>
               </CRow>
-              <CRow>
-                <CFormLabel>Interes:</CFormLabel>
+              <CRow className="mb-2 justify-content-center mx-auto">
+                <CFormLabel className="label-width">Interes:</CFormLabel>
                 <CFormInput onChange={(e) => setInteres(e.target.value)} />
               </CRow>
             </CCallout>
