@@ -62,7 +62,8 @@ export default function CrearFacturas({ enviar, setEnviar }) {
     <div>
       <CContainer>
         <CModal
-          fullscreen="xxl"
+          size="xl"
+          alignment="center"
           visible={enviar}
           onClose={() => setEnviar(false)}
         >
@@ -115,7 +116,7 @@ export default function CrearFacturas({ enviar, setEnviar }) {
             </CCallout>
             <CCallout color="info">
               <CRow>
-                <CFormLabel >Otros:</CFormLabel>
+                <CFormLabel>Otros:</CFormLabel>
               </CRow>
               <CRow>
                 <CCol>
@@ -135,8 +136,8 @@ export default function CrearFacturas({ enviar, setEnviar }) {
                 </CCol>
               </CRow>
               <CRow>
-                <CFormLabel >Item:</CFormLabel>
                 <CCallout>
+                  <CFormLabel>Item:</CFormLabel>
                   <CRow className="mb-2 justify-content-center mx-auto">
                     <CCol xs="auto">
                       <CFormLabel className="label-width">Album:</CFormLabel>
@@ -190,8 +191,12 @@ export default function CrearFacturas({ enviar, setEnviar }) {
                 </CCol>
               </CRow>
               <CRow className="mb-2 justify-content-center mx-auto">
-                <CFormLabel className="label-width">Interes:</CFormLabel>
-                <CFormInput onChange={(e) => setInteres(e.target.value)} />
+                <CCol xs="auto">
+                  <CFormLabel className="label-width">Interes:</CFormLabel>
+                </CCol>
+                <CCol xs="auto">
+                  <CFormInput onChange={(e) => setInteres(e.target.value)} />
+                </CCol>
               </CRow>
             </CCallout>
             <CButton onClick={() => handleSubmit()}>Enviar</CButton>
