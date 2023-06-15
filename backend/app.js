@@ -8,6 +8,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routerFacturas);
 
+const cors = require("cors");
+app.use(cors());
+
 const PORT = 3676;
 
 const URL = "mongodb://127.0.0.1:27017/Facturero";
